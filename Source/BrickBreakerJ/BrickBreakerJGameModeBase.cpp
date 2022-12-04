@@ -3,6 +3,7 @@
 
 #include "BrickBreakerJGameModeBase.h"
 #include "Paddle.h"
+#include "GeneradorCapsulasDanio.h"
 
 ABrickBreakerJGameModeBase::ABrickBreakerJGameModeBase()
 {
@@ -30,6 +31,24 @@ void ABrickBreakerJGameModeBase::BeginPlay()
 		
 	}
 
+	AGeneradorCapsulas* GeneradorArmas = GetWorld()->SpawnActor<AGeneradorCapsulasDanio>(AGeneradorCapsulasDanio::StaticClass());
+	ACapsula* capsula = GeneradorArmas->GetCapsula("Arma01");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Purple, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
+	
+	capsula = GeneradorArmas->GetCapsula("Arma02");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
+
+	capsula = GeneradorArmas->GetCapsula("Arma03");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Emerald, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
+
+	capsula = GeneradorArmas->GetCapsula("Escudo01");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
+
+	capsula = GeneradorArmas->GetCapsula("Escudo02");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Orange, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
+
+	capsula = GeneradorArmas->GetCapsula("Escudo03");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Magenta, FString::Printf(TEXT("Capsula Fabricada %s"), *capsula->GetNombre()));
 }
 
 void ABrickBreakerJGameModeBase::Tick(float DeltaTime)
